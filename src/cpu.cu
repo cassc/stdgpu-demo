@@ -1,5 +1,4 @@
 #include <unordered_map>
-#include <iostream>
 #include <chrono>
 #include "main.cuh"
 
@@ -20,6 +19,13 @@ int test_cpu() {
     std::cout << "CPU Execution Time: "
               << std::chrono::duration<double, std::milli>(end - start).count()
               << " ms\n";
+
+    ull sum = 0;
+    for (const auto& [key, value] : state_map) {
+        sum += value;
+    }
+
+    assert(999999000000 == sum);
 
     return 0;
 }
